@@ -1,5 +1,24 @@
 # projectQ
 ## Run app
+### Local
+To run locally clone the repository and do the following
+* Frontend
+
+```
+cd Frontend
+npm start
+```
+* Backend
+
+```
+cd Backend
+dotnet run
+```
+
+Or open solution in visual studio code and press run button (http/https)
+
+***Note:** Ports and db connection string are configured to run in docker environment, that will need to be changed for app to work locally. `BASE_URL` on frontend and `DB_CONNECTION_STRING` on backend*
+### Docker
 Best way to test the app is to run it in a docker container.
 To do so, clone the repository and from the location of the `Docker-compose.yml` file run following command:
 ```
@@ -31,7 +50,7 @@ psql postgresql://{user}:{pass}@localhost:5432/postgres
 SELECT * FROM "Users";
 ```
 
-Commands description:
+Command description:
 
 `docker container ls` - list container to see some main details
 
