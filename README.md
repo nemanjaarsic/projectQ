@@ -9,6 +9,7 @@ docker compose up
 To test the app do the follwing
 * Frontend
 Client UI is located on follwing address `http://localhost:3000`. From there you can send new emails and see email history of a user.
+
 ***Note:** it is recomended to use firefox brawser with `CORS Everywhere` addon other wise CORS might cause problems*
 * Backend
 Swagger for backend is on following address `http://localhost:50010/swagger/index.html`. From there you can send requests to server
