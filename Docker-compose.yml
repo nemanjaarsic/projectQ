@@ -1,0 +1,48 @@
+version: "3.5"
+
+networks:
+  docker-emailProject:
+    driver: bridge
+
+services:
+  frontend:
+    image: dockerized-email-frontend:latest
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - docker-emailProject
+
+  backend:
+    image: dockerized-email-api:latest
+    depends_on:
+      - "postgres_image"
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    ports:
+      - 50010:50010
+    environment:
+      DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=postgres;username=postgres;password=machker"
+    networks:
+      - docker-emailProject
+  
+  postgres_image:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - emailProjectdb_volume:/var/lib/posrgresql/data
+      - ./Backend/dbscripts/migration.sql:/docker-entrypoint-initdb.d/migration.sql
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "machker"
+      POSTGRES_DB: "emailProject"
+    networks:
+      - docker-emailProject
+
+volumes:
+  emailProjectdb_volume:
