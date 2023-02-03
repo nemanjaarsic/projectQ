@@ -35,7 +35,7 @@ const EmailForm = () => {
   const [content, setContent] = useState('');
   const [emailHistory, setEmailHistory] = useState([]);
   const [error, setError] = useState('');
-  const [userEmail, setUserEmail] = useState(' ')
+  const [userEmail, setUserEmail] = useState('')
   const [openEmailHistory, setOpenEmailHistory] = useState(false)
 
   const [openModal, setOpenModal] = useState(false);
