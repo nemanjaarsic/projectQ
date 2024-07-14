@@ -66,5 +66,7 @@ Command description:
 
 `\dt or \dt+` - list tables or list tables with more details
 
+`\d+ {table_name}` - list table columns and indexes
+
 `SELECT * FROM "Users";` - simple query example. *Query is case insensitive and quote marks on table name are necesery* 
 
